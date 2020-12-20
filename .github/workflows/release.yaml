@@ -24,5 +24,6 @@ jobs:
             echo "Not matching version. Ignoring"; \
           else \
             echo "Pushing"; \
+            git checkout -b $branch_name; \
             git push origin $branch_name; \
         fi
