@@ -13,6 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
     - name: Push to release branch
       run: |
         export tag=$(echo ${GITHUB_REF#refs/tags/})
@@ -23,8 +25,7 @@ jobs:
           then \
             echo "Branch $branch_name exists. Adding changes"; \
             git checkout $branch_name; \
-            git config user.name "mlrun-iguazio"; \
-            git rebase $tag; \
+            git merge $tag; \
           else \
             echo "Creating new branch: $branch_name"; \
             git checkout -b $branch_name; \
