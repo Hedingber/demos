@@ -17,8 +17,8 @@ jobs:
         export tag=$(echo ${GITHUB_REF#refs/tags/})
         export tag_suffix=$(echo ${tag%.*}.x)
         export branch_name=$(echo release/$tag_suffix)
-        git fetch origin $branch_name
-        if [[ $? -eq 0 ]]; \
+        git fetch origin $branch_name || exit_code=$?
+        if [[ $exit_code -eq 0 ]]; \
           then \
             echo "Branch $branch_name exists. Adding changes"; \
             git checkout $branch_name; \
