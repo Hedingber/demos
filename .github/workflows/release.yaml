@@ -23,7 +23,7 @@ jobs:
           then \
             echo "Branch $branch_name exists. Adding changes"; \
             git checkout $branch_name; \
-            git pull origin $tag; \
+            git pull origin $tag --no-rebase; \
           else \
             echo "Creating new branch: $branch_name"; \
             git checkout -b $branch_name; \
