@@ -17,11 +17,12 @@ endif
 	BRANCH_NAME=$$(echo release/$$TAG_SUFFIX); \
 	git fetch origin $$BRANCH_NAME || EXIT_CODE=$$?; \
 	echo $$EXIT_CODE; \
-	if [[ $$EXIT_CODE -eq 0 ]]; \
+	if [ "$$EXIT_CODE" = "" ]; \
 		then \
 			echo "Branch $$BRANCH_NAME exists. Adding changes"; \
 			git checkout $$BRANCH_NAME; \
-			git merge --squash $(MLRUN_TAG); \
+			git checkout $(MLRUN_TAG) .; \
+			git add -A; \
 		else \
 			echo "Creating new branch: $$BRANCH_NAME"; \
 			git checkout --orphan $$BRANCH_NAME; \
