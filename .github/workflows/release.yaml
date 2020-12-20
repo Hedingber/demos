@@ -23,6 +23,7 @@ jobs:
           then \
             echo "Branch $branch_name exists. Adding changes"; \
             git checkout $branch_name; \
+            git config user.name "mlrun-iguazio"; \
             git merge $tag --allow-unrelated-histories; \
           else \
             echo "Creating new branch: $branch_name"; \
