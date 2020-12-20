@@ -25,6 +25,7 @@ jobs:
             git checkout $branch_name; \
             git checkout $tag .; \
             git add -A; \
+            git config user.name "mlrun-iguazio"; \
             git commit -m "Adding $tag contents"; \
           else \
             echo "Creating new branch: $branch_name"; \
