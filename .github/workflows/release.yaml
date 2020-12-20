@@ -23,10 +23,7 @@ jobs:
           then \
             echo "Branch $branch_name exists. Adding changes"; \
             git checkout $branch_name; \
-            git checkout $tag .; \
-            git add -A; \
-            git config user.name "mlrun-iguazio"; \
-            git commit -m "Adding $tag contents"; \
+            git merge $tag; \
           else \
             echo "Creating new branch: $branch_name"; \
             git checkout -b $branch_name; \
