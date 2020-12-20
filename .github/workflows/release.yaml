@@ -5,6 +5,7 @@ on:
     tags:
       - 'v*.*.*'
 
+
 jobs:
   push-to-release-branch:
     name: Push source to release branch
