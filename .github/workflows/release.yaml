@@ -23,8 +23,8 @@ jobs:
           then \
             echo "Branch $branch_name exists. Adding changes"; \
             git checkout $branch_name; \
-            git pull origin $branch_name --tags; \
-            git merge $tag; \
+            git pull origin $branch_name; \
+            git merge $tag --allow-unrelated-histories; \
           else \
             echo "Creating new branch: $branch_name"; \
             git checkout -b $branch_name; \
