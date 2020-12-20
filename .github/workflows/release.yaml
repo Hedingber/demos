@@ -15,7 +15,7 @@ jobs:
       run: |
         echo $GITHUB_REF
         git remote -v
-        export tag=$(echo ${GITHUB_REF#refs/heads/releases/})
+        export tag=$(echo ${GITHUB_REF#refs/tags/})
         export tag_match_pattern=$(echo "$tag" | grep -E "^v[0-9]+\.[0-9]+\.[0-9]+$")
         export tag_suffix=$(echo ${tag:0:$((${#tag}-1))}x)
         export branch_name=$(echo release/$tag_suffix)
