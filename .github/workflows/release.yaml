@@ -5,6 +5,7 @@ on:
     tags:
       - 'v*.*.*'
 
+
 jobs:
   push-to-release-branch:
     name: Push source to release branch
@@ -22,7 +23,10 @@ jobs:
           then \
             echo "Branch $branch_name exists. Adding changes"; \
             git checkout $branch_name; \
-            git pull origin $tag; \
+            git checkout $tag .; \
+            git add -A; \
+            git config user.name "mlrun-iguazio"; \
+            git commit -m "Adding $tag contents"; \
           else \
             echo "Creating new branch: $branch_name"; \
             git checkout -b $branch_name; \
