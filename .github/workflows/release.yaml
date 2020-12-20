@@ -23,9 +23,9 @@ jobs:
           then \
             echo "Branch $branch_name exists. Adding changes"; \
             git checkout $branch_name; \
-            git merge $tag --no-commit --no-ff -X theirs; \
-            git reset $branch_name; \
-            git pull origin $tag --no-rebase; \
+            git checkout $tag .; \
+            git add -A; \
+            git commit -m "Adding $tag contents"; \
           else \
             echo "Creating new branch: $branch_name"; \
             git checkout -b $branch_name; \
