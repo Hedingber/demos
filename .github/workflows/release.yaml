@@ -22,6 +22,7 @@ jobs:
           then \
             echo "Branch $branch_name exists. Adding changes"; \
             git checkout $branch_name; \
+            git pull origin $branch_name --tags; \
             git merge $tag; \
           else \
             echo "Creating new branch: $branch_name"; \
