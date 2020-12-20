@@ -21,8 +21,8 @@ jobs:
         export branch_name=$(echo release/$tag_suffix)
         if [ -z "$tag_match_pattern" ]; \
           then \
+            echo "Not matching version. Ignoring"; \
+          else \
             echo "Pushing"; \
             git push origin $branch_name; \
-          else \
-            echo "Not matching version. Ignoring"; \
         fi
